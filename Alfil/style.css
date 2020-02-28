@@ -1,3 +1,8 @@
+#map{
+    height: 500px;
+    width: 100%
+}
+
 p{ /*Características de los párrafos*/
     font-weight: 600;
 }
