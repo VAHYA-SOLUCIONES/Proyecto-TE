@@ -20,8 +20,8 @@ a{ /*Características de los hipervínculos*/
 /*Fondo de página para el perfil del Alfil*/
 .fondo-alfil-profile-gray{
     background-color: #F2F2F2;
-    height: 520px;
-    max-height: 520px;
+    /*height: 520px;
+    max-height: 520px;*/
 
 }
 .fondo-alfil-profile-blue{
