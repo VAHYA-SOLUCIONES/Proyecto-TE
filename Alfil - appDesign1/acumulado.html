@@ -8,12 +8,11 @@
     <!--Esto despliega el menú tipo Uber-->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
     <link rel="stylesheet" href="style.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Alfil - Datos</title>
+    <title>$ acumulado</title>
 </head>
 <body>
     <div class="container-fluid fondo-alfil-profile-blue">
-        <div class="row">
+        <div class="row-12">
             <div class="col-12">
                 <br/>
                 <a href="index.html">
@@ -26,30 +25,38 @@
         <div class="row">
             <div class="col"></div>
             <div class="col center-text">
-                <h4><b>Perfil conductor</b></h4>
-                <img src="images/profile-default.png" class="rounded-circle profile-menu-image"/>
+                <h3 style="color: #1B53F2;"><b>Acumulado:</b></h3>
             </br>
             </div>
             <div class="col"></div>
         </div>
     </div>
     <div class="container-fluid fondo-alfil-profile-gray">
-        <div class="d-flex p-3 ">
-            <div class="col">
-            <h6><b>Nombre(s):</b></h6>
-            <h5 id="nombreAlfil">Juan Antonio</h5>
-            <h6><b>Apellidos:</b></h6>
-            <h5 id="apellidoAlfil">Cortés Araujo</h5>
-            <h6><b>Alfil:</b></h6>
-            <h5 id="numeroAlfil">92</h5>
-            <h6><b>Edad:</b></h6>
-            <h5 id="edadAlfil">27 años</h5>
-            <h6><b>Licencia:</b></h6>
-            <h5 id="licenciaAlfil">F1768</h5>
-            <h6><b>Calificación:</b></h6>
-            <h5 id="calificacionAlfil">9.5</h5>
+        <div class="container-fluid fondo-alfil-profile-gray">
+            <div class="d-flex p-3 ">
+                <div class="col">
+                <h2 id="acumuladoAlfil" style="text-align: center;"><b>$5,322.50</b></h2>
+                <hr>
+                <ul style="list-style-type:none;">
+                    <li>Rutas Completas: 25</li>
+                    <li>Viajes Completos : 122</li>
+                    <li>Viajes Rechazados: 2</li>
+                    <li>Reportes de Cliente: 0</li>
+                    <li>Retardos: 0</li>
+                    <li>Días no laborados: 1</li>
+                </ul>
+                <hr>
+                <h5><b>Penalizaciones</b></h5>
+                <ul style="list-style-type:none;">
+                    <li>Viajes Rechazados: $50.00</li>
+                    <li>Retardos: $0.00</li>
+                    <li>No laborados: $25.00</li>
+                    <br><br>
+                </ul>
+                </div>
             </div>
         </div>
-    </div>       
+        <br><br><br><br><br>
+    </div>
 </body>
 </html>

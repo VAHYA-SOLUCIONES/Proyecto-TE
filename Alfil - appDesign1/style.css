@@ -30,7 +30,7 @@ a{ /*Características de los hipervínculos*/
 
 }
 .fondo-alfil-profile-blue{
-    background-color: #DA961B;/*Lo dejé con color dorado*/
+    background-color: #F2F2F2;/*Lo dejé con color dorado*/
     /*
     Colores:
     Azul fuerte: #0511F3
@@ -40,6 +40,9 @@ a{ /*Características de los hipervínculos*/
     Leve gris  : #F2F2F2
     */
 }
+/*h5{
+    color: #1B53F2;
+}*/
 
 @media (max-width: 991.98px) {/*modificar a resolución de pantalla o viewpoint*/
     .offcanvas-collapse {
