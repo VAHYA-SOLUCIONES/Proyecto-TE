@@ -14,4 +14,5 @@
     <string name="app_rechazar">Rechazar</string>
     <string name="app_detalles">Detalles:</string>
     <string name="title_activity_mapa_viajes">Map</string>
+    <string name="access_token">pk.eyJ1IjoiYXJrYWRpIiwiYSI6ImNrOGJ6b2o0bTBid2sza283azg4d2JsYWYifQ._ubT8kqm_s3XO9124SPK8Q</string>
 </resources>

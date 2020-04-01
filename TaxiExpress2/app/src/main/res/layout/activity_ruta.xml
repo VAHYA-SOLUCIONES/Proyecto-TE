@@ -77,70 +77,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="377dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/btnMapa1"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/more"
+        app:layout_constraintBottom_toBottomOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="Destino: C0001 Zona Centro"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="36dp"
+        android:text="Inicio: C0125 NISSAN 2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.315">
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="8dp"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="305dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="349dp"
-                    android:layout_height="wrap_content"
-                    android:text="Destino: C0001 Zona Centro" />
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="349dp"
-                    android:layout_height="wrap_content"
-                    android:text="Inicio: C0125 NISSAN 2" />
-
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="349dp"
-                    android:layout_height="wrap_content"
-                    android:text="Pasajero: Israel Mendez" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="46dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="11dp" />
-
-                <Button
-                    android:id="@+id/btnMapa1"
-                    android:layout_width="43dp"
-                    android:layout_height="41dp"
-                    android:background="@drawable/more" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="Pasajero: Israel Mendez"
+        app:layout_constraintEnd_toEndOf="@+id/textView12"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

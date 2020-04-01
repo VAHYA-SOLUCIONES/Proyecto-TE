@@ -1,6 +1,7 @@
 package com.example.taxiexpress2
 
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,10 +13,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import java.sql.ClientInfoStatus
 
 class MapaViajes : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -54,7 +52,7 @@ class MapaViajes : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCl
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         // Add a marker in Sydney and move the camera
-        /*val sydney = LatLng(-34.0, 151.0)
+        /*val sydney = LatLng(-34.0, 151.0)}
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))*/
         mMap.setOnMarkerClickListener(this)
@@ -67,6 +65,12 @@ class MapaViajes : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCl
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))//naranja
 
         mMap.addMarker(markerOptions) //Posiciona marcador en donde se pasa el parámetro
+        //experimento
+        //val Eli = LatLng(21.8945755, -102.25574)
+        val Nissan = LatLng(21.7386577, -102.2803625)
+        //mMap.addMarker(MarkerOptions().position(Eli).title("Baka"))
+        mMap.addMarker(MarkerOptions().position(Nissan).title("Nissan 2"))
+        //experimento
     }
     private fun setUpMap() {//checa que tengamos los permisos, sino lo pide
         if (ActivityCompat.checkSelfPermission(this,
@@ -83,7 +87,7 @@ class MapaViajes : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCl
                 lastLocation = location
                 val currentLatLong = LatLng(location.latitude, location.longitude)
                 placeMarker(currentLatLong)
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLong, 13f))
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLong, 11f))
                 //Valores de 0 a 20, 0 = sin Zoom, 20 = lo más cerca
             }
         }
