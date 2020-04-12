@@ -28,17 +28,17 @@ class Login : AppCompatActivity() {
         btnIngresar.setOnClickListener {
             username = editTextUser?.text.toString()
             password = editTextContra?.text.toString()
-
+            /*
             if (username == "Juan" && password == "1234"){
                 bienvenida.putExtra("Nombre",username)//Envio de datos al siguiente Activity mediante Intent=bienvenida
                 startActivity(bienvenida) //start Activity
                 finish()//Cierra la Actividad
             }
             else Toast.makeText(this,"Usuario o contraseña incorrecto",Toast.LENGTH_SHORT).show()
-
+            */
             bienvenida.putExtra("Nombre",username)//Envio de datos al siguiente Activity mediante Intent=bienvenida
-            //startActivity(bienvenida) //start Activity
-            //finish()//Cierra la Actividad
+            startActivity(bienvenida) //start Activity
+            finish()//Cierra la Actividad
         }
         //para mostrar/esconder el password
         showcontra.setOnClickListener{

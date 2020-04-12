@@ -1,8 +1,10 @@
 package com.example.taxiexpress2
 
+import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Location
+import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
@@ -66,9 +68,9 @@ class MapaViajes : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCl
 
         mMap.addMarker(markerOptions) //Posiciona marcador en donde se pasa el parámetro
         //experimento
-        //val Eli = LatLng(21.8945755, -102.25574)
+        val Eli = LatLng(21.8945755, -102.25574)
         val Nissan = LatLng(21.7386577, -102.2803625)
-        //mMap.addMarker(MarkerOptions().position(Eli).title("Baka"))
+        mMap.addMarker(MarkerOptions().position(Eli).title("Baka"))
         mMap.addMarker(MarkerOptions().position(Nissan).title("Nissan 2"))
         //experimento
     }
@@ -78,7 +80,12 @@ class MapaViajes : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCl
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
             return
         }
+        //Permisos
         mMap.isMyLocationEnabled = true //Esta es mi localización
+        //extras
+        mMap.isTrafficEnabled = true
+        //locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        //extras
         mMap.mapType = GoogleMap.MAP_TYPE_NORMAL//tipo de mapa?
 
         fusedLocationClient.lastLocation.addOnSuccessListener(this){
