@@ -15,4 +15,38 @@
     <string name="app_detalles">Detalles:</string>
     <string name="title_activity_mapa_viajes">Map</string>
     <string name="access_token">pk.eyJ1IjoiYXJrYWRpIiwiYSI6ImNrOGJ6b2o0bTBid2sza283azg4d2JsYWYifQ._ubT8kqm_s3XO9124SPK8Q</string>
+    <string name="title_activity_menus">Menus</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- Menú viajes/rutas asignadas -->
+    <string name="proximo_viaje">Próximo Viaje:</string>
+    <string name="proximo_hint_viaje">Próximo destino - Próximo destino</string>
+    <!-- Menú desplegable -->
+    <string name="nav_header_title">Martín Falcón</string>
+    <string name="nav_header_subtitle">Placas del auto</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Nombres de los íconos -->
+    <string name="menu_home">Tu ruta asignada</string>
+    <string name="menu_ruta">Viajes</string>
+    <string name="menu_gallery">Perfil</string>
+    <string name="menu_slideshow">Acumulado</string>
+    <string name="menu_soporte">Soporte</string>
+    <string name="menu_ayuda">Ayuda</string>
+    <string name="menu_salir">Salir</string>
+
+    <!-- Cadenas para "perfil" -->
+    <string name="profile_hint_name">Martín Isaac Falcón Segovia</string>
+    <string name="profile_calificacion">Calificación: </string>
+    <string name="profile_licencia">Licencia: </string>
+    <string name="profile_estado">Estado: </string>
+    <string name="profile_hint_calificacion">9.5</string>
+    <string name="profile_hint_licencia">F012563</string>
+    <string name="profile_hint_estado">Activo</string>
+
+    <string name="home_second">Home Second</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
