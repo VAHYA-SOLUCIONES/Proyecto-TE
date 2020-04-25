@@ -14,11 +14,11 @@ class Ruta : AppCompatActivity() {
 
         /**Activities**/
         val mapeo = Intent(this,MapaViajes::class.java)
-        val acu = Intent(this,Acumulado::class.java)
+        /*val acu = Intent(this,Acumulado::class.java)
         btnMenu.setOnClickListener {
             //Toast.makeText(this,"Botón de Menú",Toast.LENGTH_SHORT).show()
             startActivity(acu)
-        }
+        }*/
         btnMapa1.setOnClickListener {
             startActivity(mapeo)
         }

@@ -16,7 +16,8 @@ class Welcome : AppCompatActivity() {
         val objetoBienvenida: Intent=intent
         var name: String = objetoBienvenida.getStringExtra("Nombre")//Pase de datos
         /**Activities**/
-        val pedidos = Intent(this,Ruta::class.java)
+        //val pedidos = Intent(   this,Ruta::class.java)
+        val pedidos = Intent(this,Menus::class.java)
         AlfilName.text = name
         Handler().postDelayed({
             startActivity(pedidos)//start Activity
