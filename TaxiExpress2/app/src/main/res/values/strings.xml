@@ -2,8 +2,8 @@
     <string name="app_name">Taxi Express</string>
     <string name="app_viajes">Tus Viajes Asignados</string>
     <string name="app_ingresar">Ingresar</string>
-    <string name="app_user">Usuario</string>
-    <string name="app_user_hint">Nombre de Usuario</string>
+    <string name="app_user">Correo de usuario</string>
+    <string name="app_user_hint">Correo de usuario</string>
     <string name="app_contra">Contraseña</string>
     <string name="app_bienvenidos">Bienvenido</string>
     <string name="app_ruta_asignada">Tu Ruta Asignada</string>

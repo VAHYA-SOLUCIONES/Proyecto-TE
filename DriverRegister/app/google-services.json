@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "732133286436",
+    "firebase_url": "https://taxi-express-sistema-2.firebaseio.com",
+    "project_id": "taxi-express-sistema-2",
+    "storage_bucket": "taxi-express-sistema-2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732133286436:android:27c380e3867ea53ccc2eb1",
+        "android_client_info": {
+          "package_name": "com.example.driverregister"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732133286436-qejveo3q927n8v80h0vbiu5ivbbbobfg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC26GcAiGr3smWYge7OS2y0b8AlE_Lby0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732133286436-qejveo3q927n8v80h0vbiu5ivbbbobfg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732133286436:android:427a2c21ab07779bcc2eb1",
+        "android_client_info": {
+          "package_name": "com.example.taxiexpress2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732133286436-qejveo3q927n8v80h0vbiu5ivbbbobfg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC26GcAiGr3smWYge7OS2y0b8AlE_Lby0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732133286436-qejveo3q927n8v80h0vbiu5ivbbbobfg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

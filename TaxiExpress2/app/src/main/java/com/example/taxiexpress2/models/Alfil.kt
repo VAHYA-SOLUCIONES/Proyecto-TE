@@ -1,0 +1,31 @@
+package com.example.taxiexpress2.models
+
+class Alfil(val uid: String,
+            val username: String,
+            val alfil_name: String,
+            val profileImageUrl: String,
+            val placas: String,
+            val calificacion: Float,
+            val licencia: String,
+            val estado: Boolean,
+            val alfil_acumulado: Float,
+            val viajes_completados: Short,
+            val viajes_rechazados: Byte,
+            val retardos: Byte,
+            val faltas: Byte,
+            val penalizaciones_monto: Float) {
+    constructor(): this("",
+        "",
+        "",
+        "",
+        "",
+        0.0f,
+        "",
+        true,
+        0.0f,
+        0,
+        0,
+        0,
+        0,
+        0.0f)
+}

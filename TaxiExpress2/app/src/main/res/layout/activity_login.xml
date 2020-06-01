@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".inicio.Login">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -32,13 +32,15 @@
         app:layout_constraintVertical_bias="0.476" />
 
     <EditText
-        android:id="@+id/editTextUser"
-        android:layout_width="wrap_content"
+        android:id="@+id/editTextAlfilEmail"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
         android:ems="10"
         android:hint="@string/app_user_hint"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -53,18 +55,18 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUser" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextAlfilEmail" />
 
     <EditText
-        android:id="@+id/editTextContra"
-        android:layout_width="wrap_content"
+        android:id="@+id/editTextAlfilContra"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/app_contra_hint"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextAlfilEmail"
+        app:layout_constraintStart_toStartOf="@+id/editTextAlfilEmail"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
@@ -78,9 +80,9 @@
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextContra"
-        app:layout_constraintStart_toStartOf="@+id/editTextContra"
-        app:layout_constraintTop_toBottomOf="@+id/editTextContra" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextAlfilContra"
+        app:layout_constraintStart_toStartOf="@+id/editTextAlfilContra"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAlfilContra" />
 
 
 
@@ -88,9 +90,9 @@
         android:id="@+id/showcontra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextContra"
-        app:layout_constraintStart_toEndOf="@+id/editTextContra"
-        app:layout_constraintTop_toTopOf="@+id/editTextContra"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextAlfilContra"
+        app:layout_constraintStart_toEndOf="@+id/editTextAlfilContra"
+        app:layout_constraintTop_toTopOf="@+id/editTextAlfilContra"
         app:layout_constraintVertical_bias="0.523"
         app:srcCompat="@drawable/ic_show_password_24dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
