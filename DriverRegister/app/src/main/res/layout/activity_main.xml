@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/editText_Alfil_apellido_materno"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:hint="Apellido Materno Alfil"
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/editText_Alfil_apellido_paterno"
+        app:layout_constraintStart_toStartOf="@+id/editText_Alfil_apellido_paterno"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Alfil_apellido_paterno" />
+
+    <EditText
+        android:id="@+id/editText_Alfil_licencia"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:hint="Licencia"
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/editText_Alfil_apellido_paterno"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editText_Alfil_apellido_paterno"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Alfil_placas" />
+
+    <EditText
+        android:id="@+id/editText_Alfil_placas"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Placas"
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/editText_Alfil_apellido_paterno"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editText_Alfil_apellido_paterno"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Alfil_apellido_materno" />
+
+    <EditText
+        android:id="@+id/editText_Alfil_email"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/editText_Alfil_licencia"
+        app:layout_constraintStart_toStartOf="@+id/editText_Alfil_licencia"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Alfil_licencia" />
+
+    <EditText
+        android:id="@+id/editText_Alfil_apellido_paterno"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="Apellido Paterno Alfil"
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/editText_Alfil_name"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="@+id/editText_Alfil_name"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Alfil_name" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView_perfil"
+        app:civ_border_width="4dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_photo"
+        app:layout_constraintEnd_toEndOf="@+id/btn_photo"
+        app:layout_constraintStart_toStartOf="@+id/btn_photo"
+        app:layout_constraintTop_toTopOf="@+id/btn_photo"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+    <EditText
+        android:id="@+id/editText_Alfil_name"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="Nombre del Alfil"
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_registrar"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/rounded_button"
+        android:text="Registrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editText_Alfil_password"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/editText_Alfil_password"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Alfil_password" />
+
+    <TextView
+        android:id="@+id/textView_tienes_cuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Ya eres conductor?"
+        app:layout_constraintEnd_toEndOf="@+id/btn_registrar"
+        app:layout_constraintStart_toStartOf="@+id/btn_registrar"
+        app:layout_constraintTop_toBottomOf="@+id/btn_registrar" />
+
+    <EditText
+        android:id="@+id/editText_Alfil_password"
+        android:layout_width="370dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/editText_Alfil_email"
+        app:layout_constraintStart_toStartOf="@+id/editText_Alfil_email"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Alfil_email" />
+
+    <Button
+        android:id="@+id/btn_photo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/rounded_button"
+        android:text="Seleccione imagen"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        app:layout_constraintBottom_toTopOf="@+id/editText_Alfil_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.57" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

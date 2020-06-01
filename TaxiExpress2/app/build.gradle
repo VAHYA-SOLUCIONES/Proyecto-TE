@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.gms.google-services'//Agregado para Fire base
 
 android {
     compileSdkVersion 29
@@ -22,12 +23,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    /*compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }*/ // Por si sale un error
-// To inline the bytecode built with JVM target 1.8 into
-// bytecode that is being built with JVM target 1.6. (e.g. navArgs)
 
 
     compileOptions {
@@ -57,7 +52,20 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //Firebase
+    implementation 'com.google.firebase:firebase-core:17.0.0'
+    implementation 'com.google.firebase:firebase-auth:19.1.0'//Autenticación
+    implementation 'com.google.firebase:firebase-storage:18.0.0' //Fire Base Storage
+    implementation 'com.google.firebase:firebase-database:18.0.0' //Real time database
+    implementation 'com.google.firebase:firebase-analytics:17.2.2' //Fire Base & Google Analytics
+    implementation 'com.google.firebase:firebase-firestore:21.2.1' //Habilita el Cloud firestore
+    implementation 'com.firebaseui:firebase-ui-storage:4.3.1' //FirebaseUI
 
+    //Librerías extra
+    implementation 'de.hdodenhof:circleimageview:3.1.0' // Para redondear la foto
+    implementation 'androidx.recyclerview:recyclerview:1.1.0' //para el Recycleview
+    implementation "com.xwray:groupie:2.8.0" //Para lost RecycleView de mensajes
+    implementation 'com.squareup.picasso:picasso:2.71828' //Librería Picasso
     //Mapbox dependences
     //implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.0.0'
 }
