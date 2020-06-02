@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
         //Para poner imagen de perfil nueva:
         btn_photo.setOnClickListener {
-            Toast.makeText(this, "Seleccione su imágen de perfil", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Seleccione su imágen de perfil", Toast.LENGTH_SHORT).show()
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*" //Directorio para guardalo en Fire Base
             startActivityForResult(intent, 0)// nos lleva a buscar imágenes
@@ -65,6 +65,9 @@ class MainActivity : AppCompatActivity() {
                     uploadImageToFirebaseStorage() //sube la foto
                     Toast.makeText(baseContext, "Usuario correctamente registrado", Toast.LENGTH_SHORT).show()
                     /** Limpiar **/
+                    val intent = Intent(this, MainActivity::class.java)
+                    finish()
+                    startActivity(intent)
                     /** Limpiar **/
                 }
             }
@@ -86,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         )
         // Add a new document with a generated ID
         ref.collection("users")
-            .add(uid)
+            .add(Alfil)
             .addOnSuccessListener { documentReference ->
                 Log.d("Cloud", "DocumentSnapshot added with ID: ${documentReference.id}")
             }
