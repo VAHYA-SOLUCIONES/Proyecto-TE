@@ -4,7 +4,6 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize //No sé que rayos hace esto
-class User(val uid: String, val nombre_alfil: String, val profileImageUrl: String, val apellido_paterno: String,
-            val apellido_materno: String, val placas: String, val licencia: String): Parcelable {
-    constructor() : this("", "", "","","","","")
+class User(val uid: String, val nombre_alfil: String, val profileImageUrl: String): Parcelable {
+    constructor() : this("", "", "")
 }

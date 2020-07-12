@@ -22,7 +22,6 @@
             android:name=".Menus"
             android:label="@string/title_activity_menus"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Acumulado" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -31,14 +30,9 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
         <activity
             android:name=".maps.MapaViajes"
             android:label="@string/title_activity_mapa_viajes" />
-        <activity android:name=".Ruta" />
         <activity android:name=".inicio.Welcome" />
         <activity android:name=".inicio.Login" />
         <activity android:name=".inicio.MainActivity">
@@ -48,6 +42,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
 
 </manifest>
