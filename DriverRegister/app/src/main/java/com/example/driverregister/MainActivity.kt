@@ -18,6 +18,8 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     var selectedPhotoUri: Uri? = null //Variable de "foto"
+    lateinit var uid2: String
+    lateinit var imageName2: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         //Registrar usuario
         btn_registrar.setOnClickListener {
             registrarUsuario()
+            //uploadAlfilDataToFirebaseFirestore("Gogdanov Bone", "test")
         }
         //Para poner imagen de perfil nueva:
         btn_photo.setOnClickListener {
@@ -42,7 +45,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Foto seleccionada", Toast.LENGTH_SHORT).show()
             /****Manejando la foto****/
             selectedPhotoUri = data.data
-            //val uri = data.data
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri) //Actualizar
             imageView_perfil.setImageBitmap(bitmap)//lo que va a redondear la imagen (su ID)
             btn_photo.alpha = 0f //esto coloca la imagen circular... curioso
@@ -62,7 +64,14 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, "Fallo de autenticación", Toast.LENGTH_SHORT).show()
                     return@addOnCompleteListener //Fallo de registro
                 } else {
+                    Log.d("Testeo", "uid: ${it.result?.user?.uid}")
                     uploadImageToFirebaseStorage() //sube la foto
+                    /** Experimental **/
+                    //uploadAlfilDataToFirebaseFirestore(uid2, imageName2)
+                    //Log.d("Probando", "uid2: ${this.uid2}")
+                    //Log.d("Probando", "imageName2: ${this.imageName2}")
+                    uploadAlfilDataToFirebaseFirestore(it.result?.user?.uid.toString(), imageName2)
+                    /** Experimental **/
                     Toast.makeText(baseContext, "Usuario correctamente registrado", Toast.LENGTH_SHORT).show()
                     /** Limpiar **/
                     val intent = Intent(this, MainActivity::class.java)
@@ -76,32 +85,33 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    private fun uploadAlfilDataToFirebaseFirestore(uid: String) {
+    private fun uploadAlfilDataToFirebaseFirestore(uid: String, imageStr: String) {
         /** Experimental **/
         // Access a Cloud Firestore instance from your Activity
         val ref = FirebaseFirestore.getInstance()
-
         // Create a new user with a first and last name
-        val Alfil = hashMapOf(
-            "first" to "Ada",
-            "last" to "Lovelace",
-            "born" to 1815
-        )
+        val alfiles = ref.collection("Alfil")
         // Add a new document with a generated ID
-        ref.collection("users")
-            .add(Alfil)
-            .addOnSuccessListener { documentReference ->
-                Log.d("Cloud", "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w("Cloud", "Error adding document", e)
-            }
-//        val nombre_alfil = editText_Alfil_name.text.toString()
-//        val apellido_paterno = editText_Alfil_apellido_paterno.text.toString()
-//        val apellido_materno = editText_Alfil_apellido_materno.text.toString()
-//        val placas = editText_Alfil_placas.text.toString()
-//        val licencia = editText_Alfil_licencia.text.toString()
-//        //Instancia de Firebase Firestore
+        //el .document(uid) para nombrar el archivo
+        alfiles.document(uid).set(mapOf(
+            "Activo" to true,
+            "Alfil #" to "",
+            "Calificación" to 10,
+            "Nombre" to editText_Alfil_name.text.toString(),
+            "Apellido_Paterno" to editText_Alfil_apellido_paterno.text.toString(),
+            "Apellido_Materno" to editText_Alfil_apellido_materno.text.toString(),
+            "Placas" to editText_Alfil_placas.text.toString(),
+            "Licencia" to editText_Alfil_licencia.text.toString(),
+            "email" to editText_Alfil_email.text.toString(),
+            "foto" to "gs:/taxi-express-sistema-2.appspot.com/alfil_profile_image/$imageStr",
+            //Campos por default:
+            "Acumulado" to 10.0,
+            "vCompletados" to 0,
+            "vRechazados" to 0,
+            "Retardos" to 0,
+            "Faltas" to 0,
+            "Penalizaciones" to 0
+        ))
         /** Experimental **/
     }
 
@@ -110,7 +120,7 @@ class MainActivity : AppCompatActivity() {
         //else
         val filename = UUID.randomUUID().toString() //Unic ID
         val ref = FirebaseStorage.getInstance().getReference("/alfil_profile_image/$filename") //Variable de referencia y localización dentro de la base de datos
-
+        imageName2 = filename
         ref.putFile(selectedPhotoUri!!)
             .addOnSuccessListener { it ->
                 //Toast.makeText(this, "Imagen de perfil guardada", Toast.LENGTH_SHORT).show()
@@ -125,16 +135,12 @@ class MainActivity : AppCompatActivity() {
         val uid = FirebaseAuth.getInstance().uid ?: ""//User ID
         val ref = FirebaseDatabase.getInstance().getReference("/users/alfiles/$uid")
         /** Experimental **/
-        uploadAlfilDataToFirebaseFirestore(uid)
+        uid2 = uid
         /** Experimental **/
         val user = User(
             uid,
             editText_Alfil_name.text.toString(),
-            profileImageUrl,
-            editText_Alfil_apellido_paterno.text.toString(),
-            editText_Alfil_apellido_materno.text.toString(),
-            editText_Alfil_placas.text.toString(),
-            editText_Alfil_licencia.text.toString()
+            profileImageUrl
         )//esto es de la clase User
         ref.setValue(user)
             .addOnCompleteListener {
