@@ -52,8 +52,12 @@ class GalleryFragment : Fragment() {
             if (it.result?.get("Activo") == false) textView_gallery_alfil_estado.text = "Inactivo"
             else textView_gallery_alfil_estado.text = "Activo"
             //Foto
+            //val Imagen =
             val ref = it.result?.get("foto").toString() //dirección de la foto
             Log.d("Checando", "foto URL: ${ref}")
+            /** EXPERIMENTAL **/
+            //val fotos =
+            /** EXPERIMENTAL **/
             //
             //imageView_gallery_alfil_image
             Picasso.get().load(ref).into(imageView_gallery_alfil_image)
