@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
@@ -18,8 +19,6 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     var selectedPhotoUri: Uri? = null //Variable de "foto"
-    lateinit var uid2: String
-    lateinit var imageName2: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, 0)// nos lleva a buscar imágenes
         }
     }
-
+    // Esto es para la foto
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null) {
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             /****Manejando la foto****/
         }
     }
-
+    // Función al activar el botón
     private fun registrarUsuario() {
         /***Captura las cadenas de registro****/
         val email = editText_Alfil_email.text.toString()
@@ -64,19 +63,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, "Fallo de autenticación", Toast.LENGTH_SHORT).show()
                     return@addOnCompleteListener //Fallo de registro
                 } else {
-                    Log.d("Testeo", "uid: ${it.result?.user?.uid}")
                     uploadImageToFirebaseStorage() //sube la foto
-                    /** Experimental **/
-                    //uploadAlfilDataToFirebaseFirestore(uid2, imageName2)
-                    //Log.d("Probando", "uid2: ${this.uid2}")
-                    //Log.d("Probando", "imageName2: ${this.imageName2}")
-                    uploadAlfilDataToFirebaseFirestore(it.result?.user?.uid.toString(), imageName2)
-                    /** Experimental **/
-                    Toast.makeText(baseContext, "Usuario correctamente registrado", Toast.LENGTH_SHORT).show()
-                    /** Limpiar **/
-                    val intent = Intent(this, MainActivity::class.java)
-                    finish()
-                    startActivity(intent)
                     /** Limpiar **/
                 }
             }
@@ -103,7 +90,7 @@ class MainActivity : AppCompatActivity() {
             "Placas" to editText_Alfil_placas.text.toString(),
             "Licencia" to editText_Alfil_licencia.text.toString(),
             "email" to editText_Alfil_email.text.toString(),
-            "foto" to "gs:/taxi-express-sistema-2.appspot.com/alfil_profile_image/$imageStr",
+            "foto" to imageStr,
             //Campos por default:
             "Acumulado" to 10.0,
             "vCompletados" to 0,
@@ -120,11 +107,10 @@ class MainActivity : AppCompatActivity() {
         //else
         val filename = UUID.randomUUID().toString() //Unic ID
         val ref = FirebaseStorage.getInstance().getReference("/alfil_profile_image/$filename") //Variable de referencia y localización dentro de la base de datos
-        imageName2 = filename
         ref.putFile(selectedPhotoUri!!)
             .addOnSuccessListener { it ->
                 //Toast.makeText(this, "Imagen de perfil guardada", Toast.LENGTH_SHORT).show()
-                ref.downloadUrl.addOnCanceledListener {
+                ref.downloadUrl.addOnSuccessListener {
                     saveUserToFirebaseDatabase(it.toString())
                 }
             }
@@ -132,19 +118,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveUserToFirebaseDatabase(profileImageUrl: String) {
-        val uid = FirebaseAuth.getInstance().uid ?: ""//User ID
+        val temp = FirebaseAuth.getInstance()
+        val uid = temp.uid ?: ""//User ID
         val ref = FirebaseDatabase.getInstance().getReference("/users/alfiles/$uid")
         /** Experimental **/
-        uid2 = uid
+        //Log.d("PhotoURL", "Imagen subida URL?: ${urlUserImage}")
         /** Experimental **/
         val user = User(
             uid,
             editText_Alfil_name.text.toString(),
             profileImageUrl
         )//esto es de la clase User
+        /** EXPERIMENTAL **/
+        uploadAlfilDataToFirebaseFirestore(uid, profileImageUrl)
+        Toast.makeText(baseContext, "Usuario correctamente registrado", Toast.LENGTH_SHORT).show()
+        /** Limpiar **/
+        val intent = Intent(this, MainActivity::class.java)
+        finish()
+        startActivity(intent)
+        /** EXPERIMENTAL **/
         ref.setValue(user)
             .addOnCompleteListener {
-                Toast.makeText(this, "User saved to FireBase Data", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "User saved to FireBase Data", Toast.LENGTH_SHORT).show()
                 //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)//agregar al Taxi Express code
             }
             .addOnFailureListener {
