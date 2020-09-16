@@ -54,12 +54,7 @@ class GalleryFragment : Fragment() {
             //Foto
             //val Imagen =
             val ref = it.result?.get("foto").toString() //dirección de la foto
-            Log.d("Checando", "foto URL: ${ref}")
-            /** EXPERIMENTAL **/
-            //val fotos =
-            /** EXPERIMENTAL **/
-            //
-            //imageView_gallery_alfil_image
+            //Log.d("Checando", "foto URL: ${ref}") // Esto sirve
             Picasso.get().load(ref).into(imageView_gallery_alfil_image)
         }
         /** Experimental **/

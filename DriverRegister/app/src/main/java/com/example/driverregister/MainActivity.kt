@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         val email = editText_Alfil_email.text.toString()
         val password = editText_Alfil_password.text.toString()
         //Para que no crashie
-        if(email.isEmpty() || password.isEmpty()) return Toast.makeText(this, "Falta uno o más campos por llenar", Toast.LENGTH_SHORT).show()
+        if(email.isEmpty() || password.isEmpty() || (selectedPhotoUri == null)) return Toast.makeText(this, "Falta uno o más campos por llenar", Toast.LENGTH_SHORT).show()
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (!it.isSuccessful) {
