@@ -22,7 +22,7 @@
     <string name="proximo_viaje">Próximo Viaje:</string>
     <string name="proximo_hint_viaje">Próximo destino - Próximo destino</string>
     <!-- Menú desplegable -->
-    <string name="nav_header_title">Martín Falcón</string>
+    <string name="nav_header_title">User Name!</string>
     <string name="nav_header_subtitle">Placas del auto</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -46,6 +46,19 @@
     <string name="profile_hint_estado">Activo</string>
 
     <string name="home_second">Home Second</string>
+
+    <!-- Strings for "ruta_nueva" objetc -->
+    <string name="ruta_nueva_ID">ID del viaje:</string>
+    <string name="ruta_nueva_ppartida">Salida:</string>
+    <string name="ruta_nueva_pdestino">Destino:</string>
+    <string name="ruta_nueva_pasajero">Pasajero:</string>
+    <string name="ruta_nueva_Hora">Hora:</string>
+    <string name="ruta_nueva_hint_Hora_salida">Hora de salida:</string>
+    <string name="ruta_nueva_hint_Hora_llegada">Hora de llegada:</string>
+    <string name="ruta_nueva_hint_ID_viaje">083694312</string>
+    <string name="ruta_nueva_hint_ppartida">Nissan 2</string>
+    <string name="ruta_nueva_hint_pdestino">El Parian</string>
+    <string name="ruta_nueva_hint_pasajero">Nombre pasajero</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
