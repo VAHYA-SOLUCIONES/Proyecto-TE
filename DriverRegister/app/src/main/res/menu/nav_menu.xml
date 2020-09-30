@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/driver_register"
+        android:title="Registro de Alfiles"
+        app:showAsAction="collapseActionView" />
+
+    <item android:id="@+id/route_register"
+        android:title="Asignar nuevo viaje"
+        app:showAsAction="collapseActionView" />
+
+    <item android:id="@+id/experimental_map"
+        android:title="Mapa experimental"
+        app:showAsAction="collapseActionView" />
+
+</menu>

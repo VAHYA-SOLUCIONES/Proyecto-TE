@@ -6,24 +6,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.RecyclerView
-import com.example.taxiexpress2.maps.MapaViajes
 import com.example.taxiexpress2.R
-import com.example.taxiexpress2.inicio.MainActivity
 import com.example.taxiexpress2.inicio.NextTravel
+import com.example.taxiexpress2.maps.MapboxMap
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
-import kotlinx.android.synthetic.main.activity_mapa_viajes.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.ruta_nueva.*
 
@@ -57,7 +50,8 @@ class HomeFragment : Fragment() {
         fetchViajes() // Pon los viajes
         /** Experimental **/
 
-        val mapeo = Intent(activity, MapaViajes::class.java)
+        //
+        val mapeo = Intent(activity, MapboxMap::class.java)
         btn_map.setOnClickListener {
             Toast.makeText(activity,"Cargando mapa",Toast.LENGTH_SHORT).show()
             startActivity(mapeo)
