@@ -8,7 +8,7 @@ buildscript {
         //mavenCentral() //agregado para Mapbox
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -21,7 +21,10 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        /** Agregado para Mapbox **/
+        mavenCentral()
+        maven { url 'https://mapbox.bintray.com/mapbox' }
+        /** Agregado para Mapbox **/
     }
 }
 
