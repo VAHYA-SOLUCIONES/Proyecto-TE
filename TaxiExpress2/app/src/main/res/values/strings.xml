@@ -47,6 +47,9 @@
 
     <string name="home_second">Home Second</string>
 
+    <!-- Menú Settings "menus.xml" -->
+    <string name="Logout">Cerrar sesión</string>
+
     <!-- Strings for "ruta_nueva" objetc -->
     <string name="ruta_nueva_ID">ID del viaje:</string>
     <string name="ruta_nueva_ppartida">Salida:</string>

@@ -70,9 +70,8 @@ class Menus : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {//ese es el ID del recurso del menú
-            R.id.nav_salir -> { // Mejorar
-            FirebaseAuth.getInstance().signOut()
-                Log.d("exit", "EXIT!!!!!")
+            R.id.action_settings -> {
+                FirebaseAuth.getInstance().signOut()
                 val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)//agregar al Taxi Express code
                 startActivity(intent)
