@@ -146,16 +146,18 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Falla al seleccionar valor a la base de datos", Toast.LENGTH_SHORT).show()
             }
     }
-
+    /** Menú de opciones **/
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             R.id.driver_register -> {
-                val intent = Intent(this, RegisterActivity::class.java)
+                /*val intent = Intent(this, RegisterActivity::class.java)
                 finish()
-                startActivity(intent)
+                startActivity(intent)*/
             }
             R.id.route_register -> {
-                //
+                val intent = Intent(this, AsignarViajes::class.java)
+                finish()
+                startActivity(intent)
             }
             R.id.experimental_map -> {
                 //
@@ -163,8 +165,10 @@ class RegisterActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.nav_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
+    /** Menú de opciones **/
 }

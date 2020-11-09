@@ -6,6 +6,7 @@ import android.content.Intent
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.Toast
 import com.example.taxiexpress2.R
@@ -48,7 +49,10 @@ class MapboxMap : AppCompatActivity(), PermissionsListener, LocationEngineListen
     //2
     lateinit var map: MapboxMap
     lateinit var permissionManager: PermissionsManager
-    var originLocation: Location? = null
+    var originLocation: Location? = null // Esta es mi ubicación en el mapa
+    // Agregadas por mi
+    var destino: Location? = null // Ubicación fin de ruta!!!
+    var partida: Location? = null // Ubicación para empezar la ruta!!
 
     var locationEngine: LocationEngine? = null
     var locationComponent: LocationComponent? = null
@@ -77,6 +81,11 @@ class MapboxMap : AppCompatActivity(), PermissionsListener, LocationEngineListen
             NavigationLauncher.startNavigation(this, navigationLauncherOptions) //4
         }
         /** Esto es para activar la navegación !! **/
+        // Debría llamar aquí lo de la ruta -> ...
+        // Delay para activar la ruta
+        Handler().postDelayed({
+            trazarRuta() //Experimental
+        },500)
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -165,11 +174,11 @@ class MapboxMap : AppCompatActivity(), PermissionsListener, LocationEngineListen
     override fun onMapReady(mapboxMap: MapboxMap?) {
         //1
         map = mapboxMap ?: return
-//2
+        //2
         val locationRequestBuilder = LocationSettingsRequest.Builder().addLocationRequest(
             LocationRequest()
             .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY))
-//3
+        //3
         val locationRequest = locationRequestBuilder?.build()
 
         settingsClient?.checkLocationSettings(locationRequest)?.run {
@@ -233,21 +242,25 @@ class MapboxMap : AppCompatActivity(), PermissionsListener, LocationEngineListen
         map.animateCamera(
             CameraUpdateFactory.newLatLngZoom(
                 LatLng(location.latitude,
-            location.longitude), 30.0))
+            location.longitude), 10.0))
     }
 
     override fun onMapClick(point: LatLng) {
-        if(!map.markers.isEmpty()){
+        /*if(!map.markers.isEmpty()){
             map.clear()
         }
         map.addMarker(MarkerOptions().setTitle("Estuve aquí!").setSnippet("Descripción de lo que debería salir aquí").position(point))
         checkLocation()
         originLocation?.run {
+            // Acaso será esto lo que busco?
             val startPoint = Point.fromLngLat(longitude, latitude)
-            val endPoint = Point.fromLngLat(point.longitude, point.latitude)
+            //val endPoint = Point.fromLngLat(point.longitude, point.latitude)
+            val endPoint = Point.fromLngLat(-102.25574, 21.8945755)
+            //val endPoint = Point.fromLngLat(21.8945755, -102.25574)
+            //Log.d("Mapeo", endPoint.toString())
 
             getRoute(startPoint, endPoint)
-        }
+        }*/
     }
     @SuppressLint("MissingPermission")
     private fun checkLocation() {
@@ -258,8 +271,29 @@ class MapboxMap : AppCompatActivity(), PermissionsListener, LocationEngineListen
         }
     }
     /** Life cycle  **/
+    //fun trazarRuta(point: LatLng) {
+    fun trazarRuta() {
+        if(!map.markers.isEmpty()){
+            map.clear()
+        }
+        //map.addMarker(MarkerOptions().position(point)) // No lo necesitamos
+        //map.addMarker(MarkerOptions().setTitle("Estuve aquí!").setSnippet("Descripción de lo que debería salir aquí").position(point))
+        checkLocation()
+        originLocation?.run {
+            // Acaso será esto lo que busco?
+            val startPoint = Point.fromLngLat(longitude, latitude)
+            //val endPoint = Point.fromLngLat(point.longitude, point.latitude)
+            val endPoint = Point.fromLngLat(-102.25574, 21.8945755)
+            //map.addMarker(MarkerOptions().setTitle("Estuve aquí!").setSnippet("Descripción de lo que debería salir aquí").position(point))
+            //Log.d("Mapeo", endPoint.toString())
+            getRoute(startPoint, endPoint)
+        }
+    }
     /** Función para Mapbox Navigation API **/
     fun getRoute(originPoint: Point, endPoint: Point) {
+        /** EXPERIMENTAL **/
+        //val
+        /** EXPERIMENTAL **/
         NavigationRoute.builder(this) //1
             .accessToken(Mapbox.getAccessToken()!!) //2
             .origin(originPoint) //3

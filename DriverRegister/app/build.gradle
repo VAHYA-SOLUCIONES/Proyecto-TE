@@ -23,7 +23,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -47,4 +50,10 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0' //para el Recycleview
     implementation "com.xwray:groupie:2.8.0" //Para lost RecycleView de mensajes
     implementation 'com.squareup.picasso:picasso:2.71828' //Librería Picasso
+    // Mapbox
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.26.0'
+    implementation ('com.mapbox.mapboxsdk:mapbox-android-sdk:6.8.1') {
+        exclude group: 'group_name', module: 'module_name'
+    }
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
 }
