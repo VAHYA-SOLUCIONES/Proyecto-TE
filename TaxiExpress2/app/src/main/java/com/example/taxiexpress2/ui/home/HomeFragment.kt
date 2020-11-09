@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.taxiexpress2.R
 import com.example.taxiexpress2.inicio.NextTravel
 import com.example.taxiexpress2.maps.MapboxMap
@@ -46,16 +47,18 @@ class HomeFragment : Fragment() {
         for(i in 0..5) adapter.add(UserItem())
 
         recyclerview_viajes_disponibles.adapter = adapter // recyclerview de los mapas
+        //Línea de separación de chats, útil para la parte de separar viajes
+        recyclerview_viajes_disponibles.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
+        //
+        adapter.setOnItemClickListener { item, view ->
+            val mapeo = Intent(activity, MapboxMap::class.java)
+            //val row = item as
+            startActivity(mapeo)
+        }
 
         fetchViajes() // Pon los viajes
         /** Experimental **/
 
-        //
-        val mapeo = Intent(activity, MapboxMap::class.java)
-        btn_map.setOnClickListener {
-            Toast.makeText(activity,"Cargando mapa",Toast.LENGTH_SHORT).show()
-            startActivity(mapeo)
-        }
         btn_aceptar_viaje.setOnClickListener {
             //Toast.makeText(activity,"Aceptar Viaje",Toast.LENGTH_SHORT).show()
             /** EXPERIMENTAL **/

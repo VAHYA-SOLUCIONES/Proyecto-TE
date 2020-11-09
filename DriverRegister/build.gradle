@@ -21,7 +21,10 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        /** Agregado para Mapbox **/
+        mavenCentral()
+        maven { url 'https://mapbox.bintray.com/mapbox' }
+        /** Agregado para Mapbox **/
     }
 }
 
