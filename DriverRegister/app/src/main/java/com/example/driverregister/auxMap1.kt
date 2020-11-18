@@ -5,6 +5,9 @@ import android.content.Intent
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
+import android.widget.Toast
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
@@ -14,7 +17,9 @@ import com.mapbox.android.core.location.LocationEnginePriority
 import com.mapbox.android.core.location.LocationEngineProvider
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
+import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.Mapbox
+import com.mapbox.mapboxsdk.annotations.MarkerOptions
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.location.LocationComponent
@@ -24,8 +29,9 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import kotlinx.android.synthetic.main.activity_asignar_viajes.*
 import kotlinx.android.synthetic.main.activity_aux_map1.*
 
+/** Este programa no tiene la "navigation API" **/
 class auxMap1 : AppCompatActivity(), PermissionsListener, LocationEngineListener,
-    OnMapReadyCallback {
+    OnMapReadyCallback, MapboxMap.OnMapClickListener {
 
     //1
     val REQUEST_CHECK_SETTINGS = 1
@@ -63,6 +69,10 @@ class auxMap1 : AppCompatActivity(), PermissionsListener, LocationEngineListener
     @SuppressWarnings("MissingPermission")
     override fun onStart() {
         super.onStart()
+        if (PermissionsManager.areLocationPermissionsGranted(this)) {
+            locationEngine?.requestLocationUpdates()
+            locationComponent?.onStart()
+        }
         mapbox.onStart()
     }
 
@@ -78,11 +88,14 @@ class auxMap1 : AppCompatActivity(), PermissionsListener, LocationEngineListener
 
     override fun onStop() {
         super.onStop()
+        locationEngine?.removeLocationUpdates()
+        locationComponent?.onStop()
         mapbox.onStop()
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        locationEngine?.deactivate()
         mapbox.onDestroy()
     }
 
@@ -99,19 +112,28 @@ class auxMap1 : AppCompatActivity(), PermissionsListener, LocationEngineListener
     }*/
 
     override fun onExplanationNeeded(permissionsToExplain: MutableList<String>?) {
-        TODO("Not yet implemented")
+        Toast.makeText(this, "Esta aplicación necesita permiso para mostrar tu localización en el mapa",
+            Toast.LENGTH_LONG).show()
     }
 
     override fun onPermissionResult(granted: Boolean) {
-        TODO("Not yet implemented")
+        if (granted) {
+            enableLocation()
+        } else {
+            Toast.makeText(this, "Ubicación del usuario no garantizada", Toast.LENGTH_LONG).show()
+            finish()
+        }
     }
-
+    @SuppressWarnings("MissingPermission")
     override fun onConnected() {
-        TODO("Not yet implemented")
+        locationEngine?.requestLocationUpdates()
     }
 
     override fun onLocationChanged(location: Location?) {
-        TODO("Not yet implemented")
+        location?.run {
+            originLocation = this
+            setCameraPosition(this)
+        }
     }
 
     override fun onMapReady(mapboxMap: MapboxMap?) {
@@ -140,11 +162,16 @@ class auxMap1 : AppCompatActivity(), PermissionsListener, LocationEngineListener
         }
     }
     /** Funciones **/
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        permissionManager.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
     //1
     fun enableLocation() {
+        map.addOnMapClickListener(this) // no irá antes?
         if (PermissionsManager.areLocationPermissionsGranted(this)) {
             initializeLocationComponent()
             initializeLocationEngine()
+            //
         } else {
             permissionManager = PermissionsManager(this)
             permissionManager.requestLocationPermissions(this)
@@ -179,5 +206,29 @@ class auxMap1 : AppCompatActivity(), PermissionsListener, LocationEngineListener
     fun setCameraPosition(location: Location) {
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude,
         location.longitude), 30.0))
+    }
+
+    override fun onMapClick(point: LatLng) {
+        if(!map.markers.isEmpty()){
+            map.clear()
+        }
+        map.addMarker(MarkerOptions().setTitle("Estuve aquí!").setSnippet("Descripción de lo que debería salir aquí").position(point))
+        //map.addMarker(MarkerOptions().setTitle("Estuve aquí!").setSnippet("Descripción de lo que debería salir aquí").position(LatLng(-102.25574, 21.8945755))) //Experimental
+
+        var coordenada = Point.fromLngLat(point.longitude, point.latitude)
+        Log.d("mapax", "Latitud: ${point.latitude}")
+        Log.d("mapax", "Longitud: ${point.longitude}")
+        Log.d("mapax", "Coordenadas: ${point}")
+        Log.d("mapax", "Coordenadas coordinates: ${coordenada.coordinates()}")
+        Log.d("mapax", "Coordenadas altitud: ${coordenada.altitude()}")
+
+        val intent = Intent(this@auxMap1, AsignarViajes::class.java)
+        var dato = coordenada.coordinates().toString()
+        var b : Bundle = Bundle()
+        b.putString("dt", dato)
+        intent.putExtras(b)
+        Handler().postDelayed({
+            startActivity(intent)
+        },2000)
     }
 }
