@@ -12,12 +12,18 @@ class AsignarViajes : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_asignar_viajes)
         /** Vamos a asignar nuevos viajes con esta app **/
-        getPoint.setOnClickListener {
+
+        var bundle = intent.extras
+        if (bundle != null) {
+            textViewGeoPoint.text = bundle.getString("dt")
+        }
+        textViewGeoPoint.setOnClickListener {
             val intent = Intent(this, auxMap1::class.java)
             //finish()
             startActivity(intent)
         }
     }
+
     /** Menú de opciones **/
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
